@@ -1,0 +1,9 @@
+#!/usr/bin/make -f
+
+PACKAGE := k8s.io/minikube
+
+# Ensure vendor directories are not included in test or build for golang <= 1.8
+export DH_GOLANG_EXCLUDES := $(PACKAGE)/vendor/.*
+
+%:
+	dh $@ --buildsystem=golang --with=golang
